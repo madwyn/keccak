@@ -11,8 +11,9 @@
 #include <stdint.h>
 #include <stddef.h>
 
-/* Computes a keccak hash */
-void keccak(uint8_t *in, size_t len, uint8_t* hash, size_t hashlen);
+/* Computes a keccak hash 
+ * Also const correctness is a headache */
+void keccak(const uint8_t *_in, const size_t _len, uint8_t *const _hash, const size_t _hashlen);
 
 
 #endif /* #ifndef KECCAK_H */
