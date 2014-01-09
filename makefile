@@ -1,19 +1,24 @@
 CC = gcc
 CFLAGS = -O3 -Wall
-TARGET = keccak_test
 
-all: $(TARGET)
+all: keccak_test keccaksum
 
-$(TARGET): keccak.o main.o
-	$(CC) $(CFLAGS) -o $(TARGET) keccak.o main.o
+keccak_test: keccak.o test.o
+	$(CC) $(CFLAGS) -o keccak_test keccak.o test.o
+
+keccaksum: keccak.o keccaksum.o
+	$(CC) $(CFLAGS) -o keccaksum keccak.o keccaksum.o
 
 keccak.o: keccak.c keccak.h
 	$(CC) $(CFLAGS) -c -o keccak.o keccak.c
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c -o main.o main.c
+test.o: test.c
+	$(CC) $(CFLAGS) -c -o test.o test.c
+
+keccaksum.o: keccaksum.c
+	$(CC) $(CFLAGS) -c -o keccaksum.o keccaksum.c
 
 .PHONY: clean
 
 clean:
-	rm -rf *.o *.gch $(TARGET)
+	rm -rf *.o *.gch keccak_test keccak_sum

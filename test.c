@@ -1,5 +1,5 @@
 /*
-** FILE:		main.c
+** FILE:		test.c
 ** AUTHOR:		incertia
 ** PURPOSE:		Testing the keccak hash function
 */
