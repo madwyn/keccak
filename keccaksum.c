@@ -59,7 +59,7 @@ int main(int argc, char **argv){
 
 	/* First check to see if all our base is in order */
 	if(argc < 2){
-		printf("Usage: keccaksum <digest_size> <files>\n");
+		printf("Usage: %s <digest_size> <files>\n", argv[0]);
 		return -1;
 	} else if(argc == 2){
 		sscanf(argv[1], "%lu", &digestsize);
