@@ -21,4 +21,4 @@ keccaksum.o: keccaksum.c
 .PHONY: clean
 
 clean:
-	rm -rf *.o *.gch keccak_test keccak_sum
+	rm -rf *.o *.gch keccak_test keccaksum
