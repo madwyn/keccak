@@ -50,10 +50,10 @@ int main(int argc, char **argv){
 void printsum(const char *_fname, FILE *_f, size_t size){	
 	uint64_t state[25];
 	uint8_t *hash = malloc(size * sizeof(uint8_t));
-	uint8_t buf[25];
+	uint8_t buf[200];
 	uint8_t tmp[144];
-	register int i, rsize, rsizew;
-	register size_t j;
+	register int i;
+	register size_t rsize, rsizew, j;
 
 	rsize = 200 - 2 * size;
 	rsizew = rsize / 8;
@@ -61,7 +61,7 @@ void printsum(const char *_fname, FILE *_f, size_t size){
 	//Clear the state
 	memset(state, 0, sizeof(state));
 
-	do {
+	while(1) {
 		//read up to rsize bytes, then do work
 		j = fread(buf, 1, rsize, _f);
 		
@@ -73,13 +73,11 @@ void printsum(const char *_fname, FILE *_f, size_t size){
 			goto fin;
 		} else {
 			//First few blocks (i.e. not last block)
-			for(; j >= rsize; j -= rsize){
-				for(i = 0; i < rsizew; i++)
-					state[i] ^= ((uint64_t *)buf)[i];
-				keccakf(state, KECCAK_ROUNDS);
-			}
+			for(i = 0; i < rsizew; i++)
+				state[i] ^= ((uint64_t *)buf)[i];
+			keccakf(state, KECCAK_ROUNDS);
 		}
-	} while(1);
+	}
 
 	//Last block + padding
 	memcpy(tmp, buf, j);
