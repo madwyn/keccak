@@ -1,6 +1,11 @@
 CC = gcc
 CFLAGS = -O3 -Wall
 
+INSTALL_DEST = /usr/local/bin
+
+install: keccaksum
+	install --strip keccaksum $(INSTALL_DEST)
+
 all: keccak_test keccaksum
 
 keccak_test: keccak.o test.o
