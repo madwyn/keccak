@@ -1,7 +1,7 @@
 /*
-** FILE:		keccak.h
-** AUTHOR:		incertia
-** PURPOSE:		Basic include header for all things keccak related
+** FILE:        keccak.h
+** AUTHOR:      incertia
+** PURPOSE:     Basic include header for all things keccak related
 */
 
 #ifndef KECCAK_H
