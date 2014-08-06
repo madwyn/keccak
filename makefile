@@ -3,10 +3,10 @@ CFLAGS = -O3 -Wall
 
 INSTALL_DEST = /usr/local/bin
 
+all: keccak_test keccaksum
+
 install: keccaksum
 	install --strip keccaksum $(INSTALL_DEST)
-
-all: keccak_test keccaksum
 
 keccak_test: keccak.o test.o
 	$(CC) $(CFLAGS) -o keccak_test keccak.o test.o
