@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -O3 -Wall
+CFLAGS = -O3 -Wall -pie -fPIE
 
 INSTALL_DEST = /usr/local/bin
 
