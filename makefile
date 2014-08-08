@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -O3 -Wall -pie -fPIE
+CFLAGS = -O3 -Wall -pie -fPIE -fstack-protector
 
 INSTALL_DEST = /usr/local/bin
 
