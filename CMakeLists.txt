@@ -10,7 +10,13 @@ set(keccak_SRCS
 set(LIBRARY_OUTPUT_PATH ${keccak_BINARY_DIR}/lib)
 
 # set lib
-add_library(keccak STATIC ${keccak_SRCS})
+add_library(keccak
+    ${keccak_SRCS}
+)
 
-target_include_directories(keccak PUBLIC "${KECCAK_ROOT_DIR}")
-
+# Install
+install(TARGETS ${INS_TARGETS}
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+)
